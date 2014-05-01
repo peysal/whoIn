@@ -3,20 +3,25 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="span6">
-                <div class="well">
-                    <h4>Did you go to the <a href="http://www.meetup.com/Meteor-SFBay/events/115875132/">Designer Potluck</a>? Sign in with Twitter to add your name.</h4>
-                    {{>loginButtons}}
-                </div>
-                <table class="table">
-                    <tr>
-                        <td>
-                            <a target="_blank" href="http://twitter.com/{{userName}}"><img src="{{image}}"/> {{fullName}}</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+        {{> content}}
     </div>
 </body>
+<template name="content">
+<div class="span6">
+    <div class="well">
+        {{> loginButtons}}
+    </div>
+    <table class="table">
+        {{#each users}}
+        {{> user}}
+        {{/each}}
+    </table>
+</div>
+</template>
+<template name="user">
+<tr>
+    <td>
+        <a target="_blank" href="http://twitter.com/{{userName}}"><img src="{{image}}"/> {{fullName}}</a>
+    </td>
+</tr>
+</template>
